@@ -254,7 +254,6 @@ namespace camiacmo
             receiveEvent = new WmiChangeEventTester(this);
 
             myNotifyIcon = new NotifyIcon();
-            myNotifyIcon.Icon = Resources.camera;
 
             myNotifyIcon.Text = "";
             myNotifyIcon.Visible = true;
