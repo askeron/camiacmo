@@ -10,6 +10,7 @@ using System.Management;
 
 using camiacmo.Properties;
 using System.Security.Principal;
+using System.Net.Http;
 
 namespace camiacmo
 {
@@ -22,6 +23,8 @@ namespace camiacmo
         private int widthWithWebhooks = 0;
         private static string WindowsStartupEntryKey = "Camiacmo";
         private List<string> ballonTipMessages = new List<string>();
+        private Dictionary<Tuple<Device, bool>, TextBox> httpGetWebhookTextboxes;
+        private static readonly HttpClient httpClient = new HttpClient();
 
         private static Color colorActive = Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
         private static Color colorInactive = Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -86,10 +89,10 @@ namespace camiacmo
                 List<string> oldApps = oldState[device].Where(x => !newState[device].Contains(x)).ToList();
                 string deviceName = GetDeviceString(device);
 
-                if (newApps.Count() > 0 || oldApps.Count() > 0)
+                if (newApps.Any() || oldApps.Any())
                 {
                     changedDevices.Add(device);
-                    if (newState[device].Count() == 0)
+                    if (! newState[device].Any())
                     {
                         ballonTipMessages.Add(deviceName + " deactivated");
                     } else
@@ -103,6 +106,28 @@ namespace camiacmo
             if (changedDevices.Any() && checkBoxBeep.Checked)
             {
                 beep();
+            }
+
+            if (checkBoxWebhooks.Checked)
+            {
+                changedDevices.Select(x =>
+                {
+                    bool wasActive = oldState[x].Any();
+                    bool isActive = newState[x].Any();
+                    if (isActive == wasActive)
+                    {
+                        return null;
+                    }
+                    return httpGetWebhookTextboxes[new Tuple<Device, bool>(x, isActive)].Text;
+                })
+                    .Where(x => x != null)
+                    .SelectMany(x => x.Split(";;;".ToCharArray()))
+                    .Where(x => x.Length > 0)
+                    .ToList()
+                    .ForEach(url => {
+                        Console.WriteLine(url);
+                        httpClient.GetStringAsync(url);
+                        });
             }
 
             if (ballonTipMessages.Any())
@@ -247,6 +272,13 @@ namespace camiacmo
         {
             InitializeComponent();
             widthWithWebhooks = this.ClientSize.Width;
+            httpGetWebhookTextboxes = new Dictionary<Tuple<Device, bool>, TextBox>
+            {
+                { new Tuple<Device, bool>(Device.Webcam, true), textBoxGetWebhookUrlWebcamActive },
+                { new Tuple<Device, bool>(Device.Webcam, false), textBoxGetWebhookUrlWebcamInactive },
+                { new Tuple<Device, bool>(Device.Microphone, true), textBoxGetWebhookUrlMicrophoneActive },
+                { new Tuple<Device, bool>(Device.Microphone, false), textBoxGetWebhookUrlMicrophoneInactive }
+            };
         }
 
         private void main_Load(object sender, EventArgs e)
@@ -263,6 +295,10 @@ namespace camiacmo
             checkBoxBeep.Checked = Settings.Default.beep;
             checkBoxNotification.Checked = Settings.Default.notification;
             checkBoxWebhooks.Checked = Settings.Default.webhooks;
+            textBoxGetWebhookUrlWebcamActive.Text = Settings.Default.httpGetWebhookUrlWebcamActive;
+            textBoxGetWebhookUrlWebcamInactive.Text = Settings.Default.httpGetWebhookUrlWebcamInactive;
+            textBoxGetWebhookUrlMicrophoneActive.Text = Settings.Default.httpGetWebhookUrlMicrophoneActive;
+            textBoxGetWebhookUrlMicrophoneInactive.Text = Settings.Default.httpGetWebhookUrlMicrophoneInactive;
 
             showState();
         }
@@ -365,6 +401,30 @@ namespace camiacmo
                 Hide();
             }
             base.OnFormClosing(e);
+        }
+
+        private void textBoxGetWebhookUrlWebcamActive_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.httpGetWebhookUrlWebcamActive = textBoxGetWebhookUrlWebcamActive.Text;
+            Settings.Default.Save();
+        }
+
+        private void textBoxGetWebhookUrlWebcamInactive_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.httpGetWebhookUrlWebcamInactive = textBoxGetWebhookUrlWebcamInactive.Text;
+            Settings.Default.Save();
+        }
+
+        private void textBoxGetWebhookUrlMicrophoneActive_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.httpGetWebhookUrlMicrophoneActive = textBoxGetWebhookUrlMicrophoneActive.Text;
+            Settings.Default.Save();
+        }
+
+        private void textBoxGetWebhookUrlMicrophoneInactive_TextChanged(object sender, EventArgs e)
+        {
+            Settings.Default.httpGetWebhookUrlMicrophoneInactive = textBoxGetWebhookUrlMicrophoneInactive.Text;
+            Settings.Default.Save();
         }
     }
 }

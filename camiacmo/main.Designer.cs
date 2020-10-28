@@ -49,7 +49,9 @@
             this.checkBoxNotification = new System.Windows.Forms.CheckBox();
             this.checkBoxWebhooks = new System.Windows.Forms.CheckBox();
             this.buttonExit = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -119,82 +121,88 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(266, 38);
+            this.label3.Location = new System.Drawing.Point(281, 240);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(108, 13);
             this.label3.TabIndex = 20;
             this.label3.Text = "HttpPostWebhookUrl";
+            this.label3.Visible = false;
             // 
             // textBoxPostWebhookUrl
             // 
-            this.textBoxPostWebhookUrl.Location = new System.Drawing.Point(266, 54);
+            this.textBoxPostWebhookUrl.Location = new System.Drawing.Point(281, 256);
             this.textBoxPostWebhookUrl.Name = "textBoxPostWebhookUrl";
-            this.textBoxPostWebhookUrl.Size = new System.Drawing.Size(229, 20);
+            this.textBoxPostWebhookUrl.Size = new System.Drawing.Size(529, 20);
             this.textBoxPostWebhookUrl.TabIndex = 21;
+            this.textBoxPostWebhookUrl.Visible = false;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(266, 81);
+            this.label4.Location = new System.Drawing.Point(6, 27);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(177, 13);
+            this.label4.Size = new System.Drawing.Size(97, 13);
             this.label4.TabIndex = 22;
-            this.label4.Text = "HttpGetWebhookUrlWebcamActive";
+            this.label4.Text = "Webcam activated";
             // 
             // textBoxGetWebhookUrlWebcamActive
             // 
-            this.textBoxGetWebhookUrlWebcamActive.Location = new System.Drawing.Point(266, 98);
+            this.textBoxGetWebhookUrlWebcamActive.Location = new System.Drawing.Point(6, 43);
             this.textBoxGetWebhookUrlWebcamActive.Name = "textBoxGetWebhookUrlWebcamActive";
-            this.textBoxGetWebhookUrlWebcamActive.Size = new System.Drawing.Size(229, 20);
+            this.textBoxGetWebhookUrlWebcamActive.Size = new System.Drawing.Size(529, 20);
             this.textBoxGetWebhookUrlWebcamActive.TabIndex = 23;
+            this.textBoxGetWebhookUrlWebcamActive.TextChanged += new System.EventHandler(this.textBoxGetWebhookUrlWebcamActive_TextChanged);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(266, 125);
+            this.label5.Location = new System.Drawing.Point(6, 66);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(185, 13);
+            this.label5.Size = new System.Drawing.Size(109, 13);
             this.label5.TabIndex = 24;
-            this.label5.Text = "HttpGetWebhookUrlWebcamInactive";
+            this.label5.Text = "Webcam deactivated";
             // 
             // textBoxGetWebhookUrlWebcamInactive
             // 
-            this.textBoxGetWebhookUrlWebcamInactive.Location = new System.Drawing.Point(266, 142);
+            this.textBoxGetWebhookUrlWebcamInactive.Location = new System.Drawing.Point(6, 82);
             this.textBoxGetWebhookUrlWebcamInactive.Name = "textBoxGetWebhookUrlWebcamInactive";
-            this.textBoxGetWebhookUrlWebcamInactive.Size = new System.Drawing.Size(229, 20);
+            this.textBoxGetWebhookUrlWebcamInactive.Size = new System.Drawing.Size(529, 20);
             this.textBoxGetWebhookUrlWebcamInactive.TabIndex = 25;
+            this.textBoxGetWebhookUrlWebcamInactive.TextChanged += new System.EventHandler(this.textBoxGetWebhookUrlWebcamInactive_TextChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(266, 169);
+            this.label6.Location = new System.Drawing.Point(6, 105);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(190, 13);
+            this.label6.Size = new System.Drawing.Size(110, 13);
             this.label6.TabIndex = 26;
-            this.label6.Text = "HttpGetWebhookUrlMicrophoneActive";
+            this.label6.Text = "Microphone activated";
             // 
             // textBoxGetWebhookUrlMicrophoneActive
             // 
-            this.textBoxGetWebhookUrlMicrophoneActive.Location = new System.Drawing.Point(266, 186);
+            this.textBoxGetWebhookUrlMicrophoneActive.Location = new System.Drawing.Point(6, 121);
             this.textBoxGetWebhookUrlMicrophoneActive.Name = "textBoxGetWebhookUrlMicrophoneActive";
-            this.textBoxGetWebhookUrlMicrophoneActive.Size = new System.Drawing.Size(229, 20);
+            this.textBoxGetWebhookUrlMicrophoneActive.Size = new System.Drawing.Size(529, 20);
             this.textBoxGetWebhookUrlMicrophoneActive.TabIndex = 27;
+            this.textBoxGetWebhookUrlMicrophoneActive.TextChanged += new System.EventHandler(this.textBoxGetWebhookUrlMicrophoneActive_TextChanged);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(266, 213);
+            this.label7.Location = new System.Drawing.Point(6, 144);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(198, 13);
+            this.label7.Size = new System.Drawing.Size(122, 13);
             this.label7.TabIndex = 28;
-            this.label7.Text = "HttpGetWebhookUrlMicrophoneInactive";
+            this.label7.Text = "Microphone deactivated";
             // 
             // textBoxGetWebhookUrlMicrophoneInactive
             // 
-            this.textBoxGetWebhookUrlMicrophoneInactive.Location = new System.Drawing.Point(266, 230);
+            this.textBoxGetWebhookUrlMicrophoneInactive.Location = new System.Drawing.Point(6, 160);
             this.textBoxGetWebhookUrlMicrophoneInactive.Name = "textBoxGetWebhookUrlMicrophoneInactive";
-            this.textBoxGetWebhookUrlMicrophoneInactive.Size = new System.Drawing.Size(229, 20);
+            this.textBoxGetWebhookUrlMicrophoneInactive.Size = new System.Drawing.Size(529, 20);
             this.textBoxGetWebhookUrlMicrophoneInactive.TabIndex = 29;
+            this.textBoxGetWebhookUrlMicrophoneInactive.TextChanged += new System.EventHandler(this.textBoxGetWebhookUrlMicrophoneInactive_TextChanged);
             // 
             // checkBoxBeep
             // 
@@ -223,12 +231,11 @@
             this.checkBoxWebhooks.AutoSize = true;
             this.checkBoxWebhooks.Checked = true;
             this.checkBoxWebhooks.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxWebhooks.Enabled = false;
             this.checkBoxWebhooks.Location = new System.Drawing.Point(11, 156);
             this.checkBoxWebhooks.Name = "checkBoxWebhooks";
-            this.checkBoxWebhooks.Size = new System.Drawing.Size(223, 17);
+            this.checkBoxWebhooks.Size = new System.Drawing.Size(114, 17);
             this.checkBoxWebhooks.TabIndex = 32;
-            this.checkBoxWebhooks.Text = "Enable Webhooks (will be available soon)";
+            this.checkBoxWebhooks.Text = "Enable Webhooks";
             this.checkBoxWebhooks.UseVisualStyleBackColor = true;
             this.checkBoxWebhooks.CheckedChanged += new System.EventHandler(this.checkBoxWebhooks_CheckedChanged);
             // 
@@ -242,23 +249,33 @@
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.textBoxGetWebhookUrlWebcamActive);
+            this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Controls.Add(this.textBoxGetWebhookUrlMicrophoneInactive);
+            this.groupBox2.Controls.Add(this.label5);
+            this.groupBox2.Controls.Add(this.textBoxGetWebhookUrlWebcamInactive);
+            this.groupBox2.Controls.Add(this.label6);
+            this.groupBox2.Controls.Add(this.label7);
+            this.groupBox2.Controls.Add(this.textBoxGetWebhookUrlMicrophoneActive);
+            this.groupBox2.Location = new System.Drawing.Point(275, 12);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(554, 204);
+            this.groupBox2.TabIndex = 34;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "HTTP-Get-Webhook-Urls";
+            // 
             // main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(510, 290);
+            this.ClientSize = new System.Drawing.Size(850, 287);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.buttonExit);
             this.Controls.Add(this.checkBoxWebhooks);
             this.Controls.Add(this.checkBoxNotification);
             this.Controls.Add(this.checkBoxBeep);
-            this.Controls.Add(this.textBoxGetWebhookUrlMicrophoneInactive);
-            this.Controls.Add(this.label7);
-            this.Controls.Add(this.textBoxGetWebhookUrlMicrophoneActive);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.textBoxGetWebhookUrlWebcamInactive);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.textBoxGetWebhookUrlWebcamActive);
-            this.Controls.Add(this.label4);
             this.Controls.Add(this.textBoxPostWebhookUrl);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.chkStartup);
@@ -274,6 +291,8 @@
             this.Resize += new System.EventHandler(this.main_Resize);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -300,6 +319,7 @@
         private System.Windows.Forms.CheckBox checkBoxNotification;
         private System.Windows.Forms.CheckBox checkBoxWebhooks;
         private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.GroupBox groupBox2;
     }
 }
 
