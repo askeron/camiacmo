@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(main));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lblMicActive = new System.Windows.Forms.Label();
@@ -50,6 +51,7 @@
             this.checkBoxWebhooks = new System.Windows.Forms.CheckBox();
             this.buttonExit = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -320,6 +322,7 @@
         private System.Windows.Forms.CheckBox checkBoxWebhooks;
         private System.Windows.Forms.Button buttonExit;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 

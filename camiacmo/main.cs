@@ -158,10 +158,10 @@ namespace camiacmo
 
         private void showState()
         {
-            bool webcamActive = currentActiveAppsPerDevice[Device.Webcam].Count > 0;
-            bool micActive = currentActiveAppsPerDevice[Device.Microphone].Count > 0;
-            SetLabelState(lblCamActive, webcamActive);
-            SetLabelState(lblMicActive, micActive);
+            bool webcamActive = currentActiveAppsPerDevice[Device.Webcam].Any();
+            bool micActive = currentActiveAppsPerDevice[Device.Microphone].Any();
+            SetLabelState(lblCamActive, currentActiveAppsPerDevice[Device.Webcam].ToList());
+            SetLabelState(lblMicActive, currentActiveAppsPerDevice[Device.Microphone].ToList());
             myNotifyIcon.Text = "Webcam " + (webcamActive ? "ON" : "OFF") + " - Mic " + (micActive ? "ON" : "OFF");
             if (webcamActive)
             {
@@ -201,10 +201,11 @@ namespace camiacmo
             }
         }
 
-        private static void SetLabelState(Label label, bool active)
+        private void SetLabelState(Label label, List<String> apps)
         {
-            label.Text = active ? "Active" : "Inactive";
-            label.ForeColor = active ? colorActive : colorInactive;
+            label.Text = apps.Any() ? "Active" : "Inactive";
+            label.ForeColor = apps.Any() ? colorActive : colorInactive;
+            toolTip1.SetToolTip(label, apps.Any() ? ("currently used by: " + String.Join(", ", apps.OrderBy(x => x).ToList())) : "no active apps");
         }
 
         private static Dictionary<Device, HashSet<string>> getActiveAppsPerDevice()
